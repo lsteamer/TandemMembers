@@ -1,6 +1,6 @@
 package com.example.tandemmembers.model
 
-data class Member(
+data class TandemMember(
     val firstName: String,
     val learns: List<String>,
     val natives: List<String>,

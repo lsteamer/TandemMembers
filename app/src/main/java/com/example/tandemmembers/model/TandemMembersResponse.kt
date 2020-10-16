@@ -1,7 +1,7 @@
 package com.example.tandemmembers.model
 
-data class MembersResponse(
+data class TandemMembersResponse(
     val errorCode: Any,
-    val response: List<Member>,
+    val response: List<TandemMember>,
     val type: String
 )
