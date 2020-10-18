@@ -7,5 +7,5 @@ import retrofit2.http.Path
 interface ApiMembersService {
 
     @GET("community_{page}.json")
-    suspend fun getMembers(@Path("page") page: String) : TandemMembersResponse
+    suspend fun getMembers(@Path("page") page: Int) : TandemMembersResponse
 }

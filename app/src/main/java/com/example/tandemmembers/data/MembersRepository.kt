@@ -7,6 +7,6 @@ class MembersRepository(
 ) : TandemRepository {
 
     override suspend fun getMembers(): List<TandemMember> {
-        return client.getMembers("1").response
+        return client.getMembers(1).response
     }
 }

@@ -27,19 +27,4 @@ class MembersViewModel(
         }
     }
 
-    fun fetchMemberList() {
-    }
-
-    /*
-
-        viewModelScope.launch {
-            try {
-                repository.getMembers(1)
-            } catch (e : Exception){
-                println("3.6 Roentgen.")
-            }
-        }
-
-     */
-
 }
