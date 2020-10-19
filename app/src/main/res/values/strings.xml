@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">TandemMembers</string>
     <string name="user_portrait">User portrait</string>
+    <string name="native_title">NATIVE</string>
+    <string name="learns_title">LEARNS</string>
 </resources>

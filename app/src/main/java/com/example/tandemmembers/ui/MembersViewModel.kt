@@ -17,10 +17,9 @@ class MembersViewModel(
     val membersLiveData: LiveData<List<TandemMember>> = _membersLiveData
 
 
-    val membersLiveData2 = liveData(Dispatchers.IO) {
+    val tandemMembersLiveData = liveData(Dispatchers.IO) {
         try {
-            val retrievedCall = repository.getMembers()
-            emit(retrievedCall)
+            emit(repository.getMembers())
         } catch (e: Exception) {
             println(e.message)
             println("3.6 Roentgen.")

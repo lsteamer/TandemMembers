@@ -3,11 +3,12 @@ package com.example.tandemmembers.ui
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView.*
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.example.tandemmembers.R
 import com.example.tandemmembers.model.TandemMember
+import kotlinx.android.synthetic.main.view_member.view.*
 
 class MemberAdapter(
     private val members: List<TandemMember>
@@ -30,13 +31,27 @@ class MemberAdapter(
         memberTandemView: View
     ) : ViewHolder(memberTandemView) {
 
-        //why can't I use
-        val memName = memberTandemView.findViewById<TextView>(R.id.name)
-        val memImage = memberTandemView.findViewById<ImageView>(R.id.iv_user_profile)
+        val memName = memberTandemView.tv_name
+        val memTopic = memberTandemView.tv_topic
+        val memImage = memberTandemView.iv_user_profile
+        val memNative = memberTandemView.tv_native
+        val memLearns = memberTandemView.tv_learns
+        val memCounter = memberTandemView.tv_counter
+
+        val requestOptions = RequestOptions()
+            .placeholder(R.drawable.user_profile_default)
+            .error(R.drawable.user_profile_default)
 
         fun bind(member: TandemMember) {
             memName.text = member.firstName
-            memImage.setImageResource(R.drawable.user_profile_default)
+            memTopic.text = member.topic
+            memCounter.text = member.referenceCnt.toString()
+            Glide.with(itemView.context).applyDefaultRequestOptions(requestOptions)
+                .load(member.pictureUrl)
+                .into(memImage)
+
+            memNative.text = member.natives.toString()
+            memLearns.text = member.learns.toString()
         }
 
     }

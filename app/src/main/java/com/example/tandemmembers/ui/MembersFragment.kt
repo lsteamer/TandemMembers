@@ -8,6 +8,7 @@ import com.example.tandemmembers.model.TandemMember
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.fragment_members.view.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MembersFragment : Fragment(R.layout.fragment_members) {
@@ -19,24 +20,14 @@ class MembersFragment : Fragment(R.layout.fragment_members) {
 
     private val membersObserver = Observer<List<TandemMember>> {
         memberAdapter = MemberAdapter(it)
-        recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = memberAdapter
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        init()
+        viewModel.tandemMembersLiveData.observe(viewLifecycleOwner, membersObserver)
 
-        //synth not working, view binding?
-        recyclerView = view.findViewById(R.id.recycler_view)
+        recyclerView = view.recycler_view
+        recyclerView.layoutManager = LinearLayoutManager(context)
 
-    }
-
-    private fun init() {
-        initObservers()
-    }
-
-
-    private fun initObservers() {
-        viewModel.membersLiveData2.observe(viewLifecycleOwner, membersObserver)
     }
 }
