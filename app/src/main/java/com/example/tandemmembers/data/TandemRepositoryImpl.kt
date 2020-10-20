@@ -2,7 +2,7 @@ package com.example.tandemmembers.data
 
 import com.example.tandemmembers.model.TandemMember
 
-class MembersRepository(
+class TandemRepositoryImpl(
     private val client: ApiMembersService
 ) : TandemRepository {
 

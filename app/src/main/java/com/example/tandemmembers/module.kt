@@ -1,7 +1,7 @@
 package com.example.tandemmembers
 
 import com.example.tandemmembers.data.ApiMembersService
-import com.example.tandemmembers.data.MembersRepository
+import com.example.tandemmembers.data.TandemRepositoryImpl
 import com.example.tandemmembers.data.TandemRepository
 import com.example.tandemmembers.ui.MembersViewModel
 import com.google.gson.GsonBuilder
@@ -13,7 +13,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 val tandemModule = module {
 
     single<TandemRepository> {
-        return@single MembersRepository(get())
+        return@single TandemRepositoryImpl(get())
     }
 
     single {
