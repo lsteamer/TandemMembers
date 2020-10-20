@@ -10,9 +10,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_members.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class MembersFragment : Fragment(R.layout.fragment_members) {
+class TandemFragment : Fragment(R.layout.fragment_members) {
 
-    private val viewModel by viewModel<MembersViewModel>()
+    private val viewModel by viewModel<TandemViewModel>()
     private val memberAdapter by lazy { MemberAdapter() }
 
     private val membersObserver = Observer<List<TandemMember>> {

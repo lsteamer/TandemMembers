@@ -7,7 +7,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/main_fragment"
-        android:name="com.example.tandemmembers.ui.MembersFragment"
+        android:name="com.example.tandemmembers.ui.TandemFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

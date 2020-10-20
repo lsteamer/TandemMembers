@@ -1,6 +1,8 @@
 package com.example.tandemmembers.data
 
 import com.example.tandemmembers.model.TandemMember
+import com.example.tandemmembers.model.TandemRepository
+import com.example.tandemmembers.network.ApiMembersService
 
 class TandemRepositoryImpl(
     private val client: ApiMembersService

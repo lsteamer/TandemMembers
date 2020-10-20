@@ -1,9 +1,9 @@
 package com.example.tandemmembers
 
-import com.example.tandemmembers.data.ApiMembersService
+import com.example.tandemmembers.network.ApiMembersService
 import com.example.tandemmembers.data.TandemRepositoryImpl
-import com.example.tandemmembers.data.TandemRepository
-import com.example.tandemmembers.ui.MembersViewModel
+import com.example.tandemmembers.model.TandemRepository
+import com.example.tandemmembers.ui.TandemViewModel
 import com.google.gson.GsonBuilder
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -24,6 +24,6 @@ val tandemModule = module {
     }
 
     viewModel {
-        MembersViewModel(get())
+        TandemViewModel(get())
     }
 }
