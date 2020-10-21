@@ -1,6 +1,9 @@
 package com.example.tandemmembers.model
 
+import androidx.paging.PagingData
+import kotlinx.coroutines.flow.Flow
+
 interface TandemRepository {
 
-    suspend fun getMembers() : List<TandemMember>
+    fun getTandemMembers() : Flow<PagingData<TandemMember>>
 }

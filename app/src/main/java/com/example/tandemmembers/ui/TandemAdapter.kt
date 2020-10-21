@@ -3,15 +3,18 @@ package com.example.tandemmembers.ui
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.paging.PagingDataAdapter
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView.*
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.tandemmembers.R
-import com.example.tandemmembers.cleanStringArrays
+import com.example.tandemmembers.util.cleanStringArrays
 import com.example.tandemmembers.model.TandemMember
 import kotlinx.android.synthetic.main.view_member.view.*
 
-class MemberAdapter : Adapter<MemberAdapter.MemberViewHolder>() {
+class MemberAdapter :
+    PagingDataAdapter<TandemMember, MemberAdapter.MemberViewHolder>(TANDEM_COMPARATOR) {
 
     private val members: MutableList<TandemMember> = mutableListOf()
 
@@ -25,12 +28,6 @@ class MemberAdapter : Adapter<MemberAdapter.MemberViewHolder>() {
         holder.bind(members[position])
 
     override fun getItemCount(): Int = members.size
-
-    fun setData(updatedMembers: List<TandemMember>) {
-        this.members.clear()
-        this.members.addAll(updatedMembers)
-        notifyDataSetChanged()
-    }
 
     class MemberViewHolder constructor(
         memberTandemView: View
@@ -64,6 +61,25 @@ class MemberAdapter : Adapter<MemberAdapter.MemberViewHolder>() {
             Glide.with(itemView.context).applyDefaultRequestOptions(requestOptions)
                 .load(member.pictureUrl)
                 .into(memImage)
+        }
+    }
+
+    companion object {
+        private val TANDEM_COMPARATOR = object : DiffUtil.ItemCallback<TandemMember>() {
+
+            override fun areItemsTheSame(oldItem: TandemMember, newItem: TandemMember): Boolean {
+                return oldItem == newItem
+            }
+
+            override fun areContentsTheSame(oldItem: TandemMember, newItem: TandemMember): Boolean {
+                return oldItem.referenceCnt == newItem.referenceCnt
+                        && oldItem.topic == newItem.topic
+                        && oldItem.pictureUrl == newItem.pictureUrl
+                        && oldItem.natives == newItem.natives
+                        && oldItem.learns == newItem.learns
+                        && oldItem.firstName == newItem.firstName
+            }
+
         }
     }
 }

@@ -1,26 +1,22 @@
 package com.example.tandemmembers.data
 
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
 import com.example.tandemmembers.model.TandemMember
 import com.example.tandemmembers.model.TandemRepository
 import com.example.tandemmembers.network.ApiMembersService
+import com.example.tandemmembers.util.TANDEM_MAX_PAGE_VALUES
+import kotlinx.coroutines.flow.Flow
 
 class TandemRepositoryImpl(
-    private val client: ApiMembersService
+    private val service: ApiMembersService
 ) : TandemRepository {
 
-    override suspend fun getMembers(): List<TandemMember> {
-        //improve with pagination
-        val list: MutableList<TandemMember> = client.getMembers(1).response.toMutableList()
-        var next = 20.rem(list.size)
-        var mutableSize = list.size / 20
-
-        while (next == 0) {
-            val addList = client.getMembers(1 + mutableSize).response
-            list.addAll(addList)
-            next = 20.rem(addList.size)
-            mutableSize = list.size / 20
-        }
-
-        return list
+    override fun getTandemMembers(): Flow<PagingData<TandemMember>> {
+        return Pager(
+            config = PagingConfig(pageSize = TANDEM_MAX_PAGE_VALUES),
+            pagingSourceFactory = {TandemPagingSource(service)}
+        ).flow
     }
 }
