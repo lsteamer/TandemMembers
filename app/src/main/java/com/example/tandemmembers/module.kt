@@ -3,6 +3,7 @@ package com.example.tandemmembers
 import com.example.tandemmembers.network.ApiMembersService
 import com.example.tandemmembers.data.TandemRepositoryImpl
 import com.example.tandemmembers.model.TandemRepository
+import com.example.tandemmembers.ui.TandemAdapter
 import com.example.tandemmembers.ui.TandemViewModel
 import com.google.gson.GsonBuilder
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -14,6 +15,10 @@ val tandemModule = module {
 
     single<TandemRepository> {
         return@single TandemRepositoryImpl(get())
+    }
+
+    single {
+        TandemAdapter()
     }
 
     single {

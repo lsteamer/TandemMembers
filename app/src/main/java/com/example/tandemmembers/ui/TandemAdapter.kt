@@ -13,8 +13,8 @@ import com.example.tandemmembers.cleanStringArrays
 import com.example.tandemmembers.model.TandemMember
 import kotlinx.android.synthetic.main.view_member.view.*
 
-class MemberAdapter :
-    PagingDataAdapter<TandemMember, MemberAdapter.MemberViewHolder>(TANDEM_COMPARATOR) {
+class TandemAdapter :
+    PagingDataAdapter<TandemMember, TandemAdapter.MemberViewHolder>(TANDEM_COMPARATOR) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MemberViewHolder =
         MemberViewHolder(

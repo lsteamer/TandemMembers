@@ -2,7 +2,6 @@ package com.example.tandemmembers
 
 import java.util.*
 
-
 const val TANDEM_STARTING_PAGE_INDEX = 1
 const val TANDEM_MAX_PAGE_VALUES = 20
 

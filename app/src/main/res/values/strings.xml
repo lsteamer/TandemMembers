@@ -3,4 +3,5 @@
     <string name="user_portrait">User portrait</string>
     <string name="native_title">NATIVE</string>
     <string name="learns_title">LEARNS</string>
+    <string name="retry">Retry</string>
 </resources>

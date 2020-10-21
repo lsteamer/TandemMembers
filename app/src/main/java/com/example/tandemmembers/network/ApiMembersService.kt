@@ -8,5 +8,4 @@ interface ApiMembersService {
 
     @GET("community_{page}.json")
     suspend fun getMembers(@Path("page") page: Int) : TandemMembersResponse
-
 }
