@@ -3,8 +3,8 @@ package com.example.tandemmembers.data
 import androidx.paging.PagingSource
 import com.example.tandemmembers.model.TandemMember
 import com.example.tandemmembers.network.ApiMembersService
-import com.example.tandemmembers.util.TANDEM_MAX_PAGE_VALUES
-import com.example.tandemmembers.util.TANDEM_STARTING_PAGE_INDEX
+import com.example.tandemmembers.TANDEM_MAX_PAGE_VALUES
+import com.example.tandemmembers.TANDEM_STARTING_PAGE_INDEX
 import retrofit2.HttpException
 import java.io.IOException
 

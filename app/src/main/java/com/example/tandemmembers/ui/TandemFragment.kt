@@ -23,6 +23,11 @@ class TandemFragment : Fragment(R.layout.fragment_members) {
         recycler_view.adapter = memberAdapter
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        recycler_view.adapter = null
+    }
+
     private fun getTandemMembers(){
         lifecycleScope.launch {
             viewModel.getMembers().collect {

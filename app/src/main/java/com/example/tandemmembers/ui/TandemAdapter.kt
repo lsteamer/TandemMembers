@@ -9,14 +9,12 @@ import androidx.recyclerview.widget.RecyclerView.*
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.tandemmembers.R
-import com.example.tandemmembers.util.cleanStringArrays
+import com.example.tandemmembers.cleanStringArrays
 import com.example.tandemmembers.model.TandemMember
 import kotlinx.android.synthetic.main.view_member.view.*
 
 class MemberAdapter :
     PagingDataAdapter<TandemMember, MemberAdapter.MemberViewHolder>(TANDEM_COMPARATOR) {
-
-    private val members: MutableList<TandemMember> = mutableListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MemberViewHolder =
         MemberViewHolder(
@@ -24,10 +22,12 @@ class MemberAdapter :
                 .inflate(R.layout.view_member, parent, false)
         )
 
-    override fun onBindViewHolder(holder: MemberViewHolder, position: Int) =
-        holder.bind(members[position])
-
-    override fun getItemCount(): Int = members.size
+    override fun onBindViewHolder(holder: MemberViewHolder, position: Int) {
+        val memberItem = getItem(position)
+        if(memberItem!= null){
+            holder.bind(memberItem)
+        }
+    }
 
     class MemberViewHolder constructor(
         memberTandemView: View
@@ -67,19 +67,16 @@ class MemberAdapter :
     companion object {
         private val TANDEM_COMPARATOR = object : DiffUtil.ItemCallback<TandemMember>() {
 
-            override fun areItemsTheSame(oldItem: TandemMember, newItem: TandemMember): Boolean {
-                return oldItem == newItem
-            }
+            override fun areItemsTheSame(oldItem: TandemMember, newItem: TandemMember): Boolean
+                = oldItem == newItem
 
-            override fun areContentsTheSame(oldItem: TandemMember, newItem: TandemMember): Boolean {
-                return oldItem.referenceCnt == newItem.referenceCnt
+            override fun areContentsTheSame(oldItem: TandemMember, newItem: TandemMember): Boolean =
+                oldItem.referenceCnt == newItem.referenceCnt
                         && oldItem.topic == newItem.topic
                         && oldItem.pictureUrl == newItem.pictureUrl
                         && oldItem.natives == newItem.natives
                         && oldItem.learns == newItem.learns
                         && oldItem.firstName == newItem.firstName
-            }
-
         }
     }
 }

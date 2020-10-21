@@ -6,7 +6,7 @@ import androidx.paging.PagingData
 import com.example.tandemmembers.model.TandemMember
 import com.example.tandemmembers.model.TandemRepository
 import com.example.tandemmembers.network.ApiMembersService
-import com.example.tandemmembers.util.TANDEM_MAX_PAGE_VALUES
+import com.example.tandemmembers.TANDEM_MAX_PAGE_VALUES
 import kotlinx.coroutines.flow.Flow
 
 class TandemRepositoryImpl(

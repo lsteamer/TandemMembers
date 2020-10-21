@@ -20,7 +20,8 @@ val tandemModule = module {
         Retrofit.Builder()
             .baseUrl("https://tandem2019.web.app/api/")
             .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
-            .build().create(ApiMembersService::class.java)
+            .build()
+            .create(ApiMembersService::class.java)
     }
 
     viewModel {

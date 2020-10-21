@@ -1,4 +1,4 @@
-package com.example.tandemmembers.util
+package com.example.tandemmembers
 
 import java.util.*
 
