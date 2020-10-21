@@ -16,7 +16,7 @@ class TandemRepositoryImpl(
     override fun getTandemMembers(): Flow<PagingData<TandemMember>> {
         return Pager(
             config = PagingConfig(pageSize = TANDEM_MAX_PAGE_VALUES),
-            pagingSourceFactory = {TandemPagingSource(service)}
+            pagingSourceFactory = { TandemPagingSource(service) }
         ).flow
     }
 }

@@ -30,7 +30,7 @@ class TandemFragment : Fragment(R.layout.fragment_members) {
         recycler_view.adapter = null
     }
 
-    private fun initAdapter(){
+    private fun initAdapter() {
         recycler_view.layoutManager = LinearLayoutManager(context)
         recycler_view.adapter = memberAdapter
 

@@ -5,5 +5,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface TandemRepository {
 
-    fun getTandemMembers() : Flow<PagingData<TandemMember>>
+    fun getTandemMembers(): Flow<PagingData<TandemMember>>
 }

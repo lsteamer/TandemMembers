@@ -24,7 +24,7 @@ class TandemAdapter :
 
     override fun onBindViewHolder(holder: MemberViewHolder, position: Int) {
         val memberItem = getItem(position)
-        if(memberItem!= null){
+        if (memberItem != null) {
             holder.bind(memberItem)
         }
     }
@@ -67,8 +67,8 @@ class TandemAdapter :
     companion object {
         private val TANDEM_COMPARATOR = object : DiffUtil.ItemCallback<TandemMember>() {
 
-            override fun areItemsTheSame(oldItem: TandemMember, newItem: TandemMember): Boolean
-                = oldItem == newItem
+            override fun areItemsTheSame(oldItem: TandemMember, newItem: TandemMember): Boolean =
+                oldItem == newItem
 
             override fun areContentsTheSame(oldItem: TandemMember, newItem: TandemMember): Boolean =
                 oldItem.referenceCnt == newItem.referenceCnt
